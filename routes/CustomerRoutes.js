@@ -8,7 +8,7 @@ router.get("/", CustomerController.getAllCustomer)
 router.get("/:id", CustomerController.getByIdCustomer)
 
 //post router
-router.post("/register" , CustomerController.addCustomer )
+
 router.post("/login", CustomerController.Login)
 
 //patch router

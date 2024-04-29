@@ -2,37 +2,6 @@ const CustomerModel = require("../models/CustomerModel");
 const bcrypt = require('bcryptjs');
 const response = require("../utils/response");
 
-const addCustomer = async (req, res) => {
-    try {
-        // Check if email already exists
-        const existingUser = await CustomerModel.findOne({ email: req.body.email });
-        if (existingUser) {
-            return res.status(400).json(response(null, "email already exists", "Email already exists"));
-        }
-
-        // Hash the password
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
-        // Create a new user
-        const newUser = await CustomerModel.create({
-            name: req.body.name,
-            email: req.body.email,
-            password: hashedPassword,
-            phone: req.body.phone,
-            address: req.body.address,
-            license: req.body.license,
-            licensePdf: req.body.licensePdf,
-            aadharNumber: req.body.aadharNumber,
-            age: req.body.age,
-            gender: req.body.gender,
-            profilePicture: req.body.profilePicture
-        });
-
-        res.status(201).json(response(newUser, "User has been created", null));
-    } catch (error) {
-        res.status(500).json(response(null, "Error", error.message));
-    }
-}
 
 const Login = async (req, res) => {
     try {
@@ -125,4 +94,4 @@ const getByIdCustomer = async (req, res) => {
     }
 }
 
-module.exports = { addCustomer , Login ,updateCustomer , DeleteCustomer ,getAllCustomer , getByIdCustomer};
+module.exports = {   Login ,updateCustomer , DeleteCustomer ,getAllCustomer , getByIdCustomer};

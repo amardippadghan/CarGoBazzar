@@ -30,12 +30,12 @@ const RenterSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    lisense : {
+    license : {
         type : String,
         required : true
     },
 
-    lisensePdf :{
+    licensePdf :{
         type : String,
         required : true
     },
